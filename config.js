@@ -38,6 +38,8 @@ function loadConfig(){
 		// replacing leading "." in paths with a current working dir
 		if(typeof config[key] === 'string' || config[key] instanceof String){
 			config[key] = config[key].replace(/^\./, process.cwd());
+			if(config[key] == "false") config[key] = false;
+			if(config[key] == "true") config[key] = true;
 		}
 	}
 	return config;

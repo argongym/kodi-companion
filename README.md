@@ -1,10 +1,6 @@
 # kodi-companion
 
-### Installing and running a dev server
-```bash
-npm install
-npm run dev
-```
+## Installation
 
 ### Kodi
 1. Install Kodi from Google Play or APK.
@@ -34,6 +30,14 @@ npm run config
 ### Starting a Server
 ```bash
 npm run start
+```
+
+## Tools
+
+### Running a Dev Server on Your PC or Mac
+```bash
+npm install
+npm run dev
 ```
 
 ### CloudFlare Reverse Proxy

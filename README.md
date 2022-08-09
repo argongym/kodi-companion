@@ -6,11 +6,6 @@ npm install
 npm run dev
 ```
 
-### CloudFlare reverse proxy
-```
-./cloudflare/proxy.js
-```
-
 ### Kodi
 1. Install Kodi from Google Play or APK.
 2. Make sure that your screen's refresh rate is 60Hz, otherwise you will see a black screen in Kodi.
@@ -36,18 +31,24 @@ Before starting server you need to create config.json file. Script below will he
 npm run config
 ```
 
-### Starting server
+### Starting a Server
 ```bash
 npm run start
 ```
 
-### [AutoMagic](https://automagic4android.com/download_en.html)
-If you have older Android version and you have problems accessing SD card then you should use Automagic to accomplish some tasks, such as rename, move, delete files on SD card and etc.
+### CloudFlare Reverse Proxy
+Some countries block access to some websites. You can use reverse proxy to change URL's of those websites, while keeping all functionality.
 ```
-./automagic/flows.xml
+./cloudflare/proxy.js
+```
+
+### [AutoMagic](https://automagic4android.com/download_en.html)
+If you have an older Android version and you have "permission denied" errors when writing to an SD card then you should use Automagic to accomplish some tasks, such as rename, move, delete files on SD card and etc. Install Automagic and import flows.xml.
+```
 ./automagic/Automagic_1_38_0.apk
+./automagic/flows.xml
 ```
 
 ### Tips
-I'm using [SyncThing](https://syncthing.net/) for quick checks on my Android device.
+[SyncThing](https://syncthing.net/) works greate for quick checks on Android devices.
 

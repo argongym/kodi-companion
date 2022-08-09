@@ -31,13 +31,12 @@ npm install --no-bin-links
 ```
 
 ### Configuring kodi-companion
-Run the command below and fill all fields.
+Before starting server you need to create config.json file. Script below will help you create it.
 ```bash
 npm run config
 ```
 
 ### Starting server
-After finishing configuration run:
 ```bash
 npm run start
 ```

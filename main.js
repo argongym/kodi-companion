@@ -57,7 +57,7 @@ server.start({ port: config.http_port }).addRoutes({
 	},
 
 	'/movies/delete': async (req, res) => {
-		let info = await movies.delete(req.parsedURL.query.path);
+		let info = await movies.deletePath(req.parsedURL.query.path);
 		res.stringify(info);
 	},
 

@@ -133,10 +133,12 @@ async function kodi(path){
 }
 
 async function deletePath(path){
+	console.log('Removing '+path);
 	if(config.with_automagic_app){
+		console.log('...with Automagic');
 		return await automagic.rm(path);
 	} else {
-		console.log('Removing '+path);
+		console.log('...with fs.rmSync');
 		fs.rmSync(path, {recursive:true, force:true});
 		return Promise.resolve({ complete: 'delete' });
 	}
@@ -164,7 +166,7 @@ module.exports = {
 	rename: rename,
 	play: play,
 	kodi: kodi,
-	delete: deletePath,
+	deletePath: deletePath,
 	unknowns: unknowns,
 	cleanGarbage: () => {
 		cleanGarbage(config.movies_dest).then(() => {

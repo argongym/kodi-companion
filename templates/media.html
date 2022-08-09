@@ -2,7 +2,7 @@
 
 <div class="container hr-separated" style="padding-top: 30px">
 
-	{{#if movies}}
+	{{#if movies.length }}
 		{{#each movies}}
 			{{> media-item }}
 		{{/each}}
@@ -11,7 +11,9 @@
 			<small>Removes garbage files and empty folders.</small>
 		</div>
 	{{else}}
-		<h2>No movies found. Please make sure that Kodi App is still Up and Running in the background. Then pull page to refresh.</h2>
+		<h3>No Movies Found</h3>
+		<p>Please make sure that Kodi App is still Up and Running in the background.</p>
+		<p>Then pull page to refresh.</p>
 	{{/if}}
 </div>
 

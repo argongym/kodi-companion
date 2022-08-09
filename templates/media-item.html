@@ -26,7 +26,7 @@
 		<h4>Удалить &laquo;{{label}}&raquo;?</h4>
 		<span>
 		    <span class="button button-outline" @click="confirm = false">Отменить</span>
-		    <span class="button" @click="delete('{{ file }}'); $refs.file.remove()">Удалить</span>
+		    <span class="button" @click="deletePath('{{ file }}'); $refs.file.remove()">Удалить</span>
 		</span>
 	</div>
 </div>

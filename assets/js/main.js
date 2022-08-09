@@ -52,7 +52,7 @@ document.addEventListener('alpine:init', () => {
             //this.video = 'http://192.168.1.86:8080/vfs/' + path;
             let status = await GET('/movies/play?path=' + encodeURIComponent(path));
         },
-        async delete(path) {
+        async deletePath(path) {
             let status = await GET('/movies/delete?path=' + encodeURIComponent(path));
         },
         async clean(path) {

@@ -79,4 +79,4 @@ cp ./automagic/flows.xml /storage/emulated/0/Automagic/flows.xml
 ![Search](./assets/images/screenshot-3.jpeg)
 
 ### Torrents
-![Torrents](./assets/images/screenshot-3.jpeg)
+![Torrents](./assets/images/screenshot-4.jpeg)

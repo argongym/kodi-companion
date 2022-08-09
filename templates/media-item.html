@@ -23,10 +23,10 @@
 
 	<div style="display: none;" x-show="confirm">
 		<hr>
-		<h4>Удалить &laquo;{{label}}&raquo;?</h4>
+		<h4>Delete &laquo;{{label}}&raquo;?</h4>
 		<span>
-		    <button class="button button-outline" @click="confirm = false">Отменить</button>
-		    <button class="button" @click="deletePath('{{ file }}'); $refs.file.remove()">Удалить</button>
+		    <button class="button button-outline" @click="confirm = false">Cancel</button>
+		    <button class="button" @click="deletePath('{{ file }}'); $refs.file.remove()">Delete</button>
 		</span>
 	</div>
 </div>

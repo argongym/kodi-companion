@@ -6,14 +6,20 @@
     <div class="shader hidden" x-bind:class="{ 'hidden': ! shown }" @click="shown = false"></div>
     <div class="bottom-content translatedY" x-bind:class="{ 'translatedY': ! shown }">
         <form action="/search" style="margin-bottom:0">
-            <input type="text" name="phrase" placeholder="Искать на RuTracker..." value="{{ phrase }}" class="input-large">
+            <input type="text" name="phrase" placeholder="Search on RuTracker..." value="{{ phrase }}" class="input-large">
         </form>
-        <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">NEW / WEEK</a>
-        <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">NEW / MONTH</a>
+        <div class="tr">
+            <div class="td2">
+                <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">NEW / WEEK</a>
+            </div>
+            <div class="td2" style="text-align:right;">
+                <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">NEW / MONTH</a>
+            </div>
+        </div>
         <hr style="margin-top:20px;margin-bottom:25px">
         <div class="tr">
             {{#if config.with_automagic_app}}<div class="td2"><button class="button button-outline" @click="kodi()">Kodi</button></div>{{/if}}
-            <div class="td2" style="text-align: right;"><a href="/" class="button {{#not URL '/'}}button-outline{{/not}}">Медиатека</a></div>
+            <div class="td2" style="text-align: right;"><a href="/" class="button {{#not URL '/'}}button-outline{{/not}}">Library</a></div>
         </div>
     </div>
 </div>

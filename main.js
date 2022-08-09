@@ -8,7 +8,7 @@ const rutracker = require('./rutracker.js');
 server.start({ port: config.http_port }).addRoutes({
 
 	'/': async (req, res) => {
-		let list = movies.getAll();
+		let list = await movies.getAll();
 		let unknowns = movies.unknowns();
 		let content = templates.fetch('media', { URL: req.url, movies: list, unknowns: unknowns } );
 		res.html(content);

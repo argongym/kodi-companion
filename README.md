@@ -10,7 +10,12 @@ Make sure that your Android's screen refresh rate is 60Hz, otherwise you will se
 	1. Settings (Gears icon) -> Media -> Videos... -> External Card -> Push and Hold on "Movies" -> Set content
 	2. "This directory contains" = "Movies".
 	3. In Settings you can choose preferred language, Default Rating source and etc.
-3. (optional) Media -> Videos -> Default select action -> Change to "Show information"
+3. Settings -> Services -> Control -> Allow remote control via HTTP -> Enable.
+4. (optional) Media -> Videos -> Default select action -> Change to "Show information"
+5. (optional) Movies -> Options ->
+	1. ViewType set to InfoWall
+	2. Sort by set to Date added
+	3. Order set to Descending
 
 ### Installing on [Termux](https://termux.dev/)
 Use [F Droid](https://f-droid.org/) to install Termux or install APK.
@@ -27,12 +32,16 @@ Before starting server you need to create config.json file. Script below will he
 ```bash
 npm run config
 ```
-Run the command and open http://127.0.0.1:3000/ in your web browser.
+Run the command and open http://127.0.0.1:3000/ in your web browser. Then copy config-tmp.json to config.json.
+```bash
+cp config-tmp.json config.json
+```
 
 ### Starting a Server
 ```bash
 npm run start
 ```
+Run the command and open http://127.0.0.1:3000/ in your web browser.
 
 ## Tools
 

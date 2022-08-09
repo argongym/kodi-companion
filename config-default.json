@@ -9,6 +9,7 @@
 	"rutracker_categories": "./cache/categories.json",
 	"curl_cookies_jar": "./cache/cookies.jar",
 	"kodi_db": "/storage/emulated/0/Android/data/org.xbmc.kodi/files/.kodi/userdata/Database/MyVideos119.db",
+	"kodi_url": "http://127.0.0.1:8080",
 	"torrents_tmp": "./cache/WebTorrent",
 	"torrents_dest": "/storage/emulated/0/Movies",
 	"movies_dest": "/storage/emulated/0/Movies"

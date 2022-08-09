@@ -16,7 +16,7 @@ npm run dev
 2. Make sure that your screen's refresh rate is 60Hz, otherwise you will see a black screen in Kodi.
 3. Add Video Source
 	1. Settings (Gears icon) -> Media -> Videos... -> External Card -> Push and Hold on "Movies" -> Set content
-	2. This directory contains "Movies".
+	2. "This directory contains" = "Movies".
 	3. In Settings you can choose preferred language, Default Rating source and etc.
 4. (optional) Media -> Videos -> Default select action -> Change to "Show information"
 

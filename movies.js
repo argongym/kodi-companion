@@ -136,6 +136,7 @@ async function deletePath(path){
 	if(config.with_automagic_app){
 		return await automagic.rm(path);
 	} else {
+		console.log('Removing '+path);
 		fs.rmSync(path, {recursive:true, force:true});
 		return Promise.resolve({ complete: 'delete' });
 	}

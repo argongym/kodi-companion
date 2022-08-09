@@ -42,7 +42,7 @@ function addRoutes(newRoutes){
 };
 
 async function processRequest(request, response){
-	//console.log("Requested URL: ", request.url);
+	console.log("Requested URL: ", request.url);
 	const parsedURL = url.parse(request.url, true);
 	parsedURL.fspath = '.' + parsedURL.pathname;
 	request.parsedURL = parsedURL;

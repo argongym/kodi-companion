@@ -17,6 +17,13 @@ document.addEventListener('alpine:init', () => {
             this.checkStatus();
         },
         async init() {
+            screen.orientation.lock("portrait")
+            .then(
+                success => console.log(success),
+                failure => console.log(failure)
+            )                
+        },
+        async downloadsInit() {
             this.checkStatus = (async function() {
                 let status = await GET('/torrents/status');
                 this.status = status;
@@ -26,9 +33,6 @@ document.addEventListener('alpine:init', () => {
                     this.timerId = null;
                 }
             }).bind(this);
-            try {
-                screen.orientation.lock("portrait");
-            } catch { };
             this.checkStatus();
         },
         async add(tid) {
@@ -67,7 +71,7 @@ document.addEventListener('alpine:init', () => {
         onVideoPause(){
             exitFullscreen();
             screen.orientation.lock("portrait");
-        }
+        },
     }));
 });
 

@@ -1,6 +1,8 @@
 {
   "scripts": {
     "dev": "STAGE=dev node ./node_modules/nodemon/bin/nodemon.js -e js,html main.js",
+    "config": "STAGE=config node config.js",
+    "config-dev": "STAGE=config node ./node_modules/nodemon/bin/nodemon.js -e js,html config.js",
     "start": "STAGE=build node ./node_modules/nodemon/bin/nodemon.js -e js,html main.js",
     "build": "STAGE=build node main.js"
   },

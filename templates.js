@@ -9,7 +9,7 @@ for(const key in templates) handlebars.registerPartial(key, templates[key]);
 for(const key in templates) compiled[key] = handlebars.compile(templates[key]);
 
 function fetch(template, vars){
-	return compiled[template]({...vars, config: config.props});
+	return compiled[template]({...vars, config: config});
 }
 
 function scanTemplates(path = ''){

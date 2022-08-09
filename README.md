@@ -27,6 +27,7 @@ Before starting server you need to create config.json file. Script below will he
 ```bash
 npm run config
 ```
+Run the command and open http://127.0.0.1:3000/ in your web browser.
 
 ### Starting a Server
 ```bash

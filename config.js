@@ -20,6 +20,7 @@ for (let key in config){
 if (process.env.STAGE == 'config') {
 	const server = require('./server.js');
 	const templates = require('./templates.js');
+	const execSync = require('child_process').execSync;
 	server.start({ port: 3000 })
 	.addRoute('/', (req, res) => {
 		let content = templates.fetch('config', {configs: config});
@@ -33,6 +34,7 @@ if (process.env.STAGE == 'config') {
 		res.stringify({status:"stopped"});
 		process.exit();
 	});
+	execSync('if [ -x "$(command -v termux-open)" ]; then termux-open http://127.0.0.1:3000/; elif [ -x "$(command -v xdg-open)" ]; then xdg-open http://127.0.0.1:3000/; elif [ -x "$(command -v open)" ]; then open http://127.0.0.1:3000/; elif [ -x "$(command -v start)" ]; then start http://127.0.0.1:3000/; else python -m webbrowser http://127.0.0.1:3000/; fi');
 }
 
 module.exports = config;

@@ -25,7 +25,9 @@ function stop(server){
 }
 
 function start(options){
+	options.port = options.port ?? 3000;
 	http.createServer().listen(options.port ?? 3000).on('request', processRequest);
+	console.log('Server started. Now you can open http://127.0.0.1:' + options.port + '/ in your web browser...');
 	return this;
 }
 

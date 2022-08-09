@@ -63,6 +63,9 @@ If you have an older Android version and you have "permission denied" errors whe
 ./automagic/Automagic_1_38_0.apk
 ./automagic/flows.xml
 ```
+```bash
+cp ./automagic/flows.xml /storage/emulated/0/Automagic/flows.xml
+```
 
 ### Tips
 [SyncThing](https://syncthing.net/) works greate for quick checks on Android devices.

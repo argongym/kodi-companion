@@ -1,5 +1,5 @@
 {
-	"with_automagic_app": true,
+	"with_automagic_app": 0,
 	"http_port": "3000",
 	"antigate_api_key": "",
 	"rutracker_user": "",

@@ -6,10 +6,10 @@
     <p>{{ plot }}</p>
     <span>
 
-	    <span class="button button-small" @click="play('{{file}}')">►</span>
+	    <button class="button button-small" @click="play('{{file}}')">PLAY</button>
 
 	    {{#if trailerid }}
-	    	<a class="button button-outline button-small" href="https://youtube.com/watch?v={{trailerid}}" target="_blank">Трейлер</a>
+	    	<a class="button button-outline button-small" href="https://youtube.com/watch?v={{trailerid}}" target="_blank">Trailer</a>
 	    {{/if}}
 
 	    {{#if imdbid }}
@@ -18,15 +18,15 @@
 		    <a class="button button-outline button-small" href="https://m.imdb.com/find?q={{urlencode label}}" target="_blank">IMDB</a>
 	    {{/if}}
 
-	    <span class="button button-outline button-small" @click="confirm = true">Удалить</span>
+	    <button class="button button-outline button-small" @click="confirm = true">Delete</button>
 	</span>
 
 	<div style="display: none;" x-show="confirm">
 		<hr>
 		<h4>Удалить &laquo;{{label}}&raquo;?</h4>
 		<span>
-		    <span class="button button-outline" @click="confirm = false">Отменить</span>
-		    <span class="button" @click="deletePath('{{ file }}'); $refs.file.remove()">Удалить</span>
+		    <button class="button button-outline" @click="confirm = false">Отменить</button>
+		    <button class="button" @click="deletePath('{{ file }}'); $refs.file.remove()">Удалить</button>
 		</span>
 	</div>
 </div>

@@ -23,9 +23,9 @@
 		</template>
 
 		<div style="padding-top:20px">
-			<div class="button button-large button-outline" @click="saveConfig($refs.form).then(stopServer); status = 'stopped'">Save &amp; Stop server</div>
+			<button class="button button-large button-outline" @click="saveConfig($refs.form).then(stopServer); status = 'stopped'">Save &amp; Stop server</button>
 
-			<div class="button button-large button-outline float-right" @click="saveConfig($refs.form); status = 'saved'">Save</div>
+			<button class="button button-large button-outline float-right" @click="saveConfig($refs.form); status = 'saved'">Save</button>
 		</div>
 
 		<blockquote x-show="status=='saved'">Saved config file to config-tmp.json.<br>Check it and rename to config.json.</blockquote>

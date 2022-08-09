@@ -10,15 +10,15 @@
         </form>
         <div class="tr">
             <div class="td2">
-                <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">Новые за неделю</a>
+                <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">Новые / неделя</a>
             </div>
             <div class="td2">
-                <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">Новые за месяц</a>
+                <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">Новые / месяц</a>
             </div>
         </div>
         <hr style="margin-top:20px;margin-bottom:25px">
         <div class="tr">
-            {{#if true}}<div class="td2"><span class="button button-outline" @click="kodi()">Kodi</span></div>{{/if}}
+            {{#if true}}<div class="td2"><button class="button button-outline" @click="kodi()">Kodi</button></div>{{/if}}
             <div class="td2" style="text-align: right;"><a href="/" class="button {{#not URL '/'}}button-outline{{/not}}">Медиатека</a></div>
         </div>
     </div>

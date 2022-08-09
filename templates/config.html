@@ -1,11 +1,39 @@
 {{> header title="Configuration" }}
 
-<div class="container" style="padding-top: 30px">
+<script type="text/javascript">
+	function saveConfig(formEl) {
+		let object = {};
+		let data = new FormData(formEl);
+		data.forEach((value, key) => object[key] = value);
+		let json = JSON.stringify(object, null, 2);
+		return GET('/save?config=' + encodeURIComponent(json));
+	}
+	function stopServer() {
+		return GET('/stop');
+	}
+</script>
+<div class="container" style="padding-top: 30px" x-data='{ status: "", configs: {{{stringify configs}}} }'>
 
-	{{#each default }}
-		{{> config-item }}
-	{{/each}}
+	<form x-ref="form" @submit.prevent="saveConfig($refs.form)">
+		<template x-for="(value, key) in configs" :key="key">
+			<div>
+				<label :for="key" x-text="key"></label>
+				<input type="text" :name="key" :value="value">
+			</div>
+		</template>
+
+		<div style="padding-top:20px">
+			<div class="button button-large button-outline" @click="saveConfig($refs.form).then(stopServer); status = 'stopped'">Save &amp; Stop server</div>
+
+			<div class="button button-large button-outline float-right" @click="saveConfig($refs.form); status = 'saved'">Save</div>
+		</div>
+
+		<blockquote x-show="status=='saved'">Saved config file to config-tmp.json.<br>Check it and rename to config.json.</blockquote>
+		<blockquote x-show="status=='stopped'">Saved config file to config-tmp.json.<br>Check it and rename to config.json.<br>Config server has been stopped.<br>Start main server with <code>npm run start</code></blockquote>
+	</form>
+
 
 </div>
 
-{{> footer }}
+</body>
+</html>

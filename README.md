@@ -20,7 +20,7 @@ npm run dev
 	3. In Settings you can choose preferred language, Default Rating source and etc.
 4. (optional) Media -> Videos -> Default select action -> Change to "Show information"
 
-### Installing and running on [Termux](https://termux.dev/)
+### Installing on [Termux](https://termux.dev/)
 Use [F Droid](https://f-droid.org/) to install Termux or install APK.
 ```bash
 termux-setup-storage
@@ -28,7 +28,18 @@ pkg update && pkg install termux-api git nodejs sqlite iconv curl python
 git clone https://github.com/argongym/kodi-companion.git
 cd kodi-companion
 npm install --no-bin-links
-npm run build
+```
+
+### Configuring kodi-companion
+Run the command below and fill all fields.
+```bash
+npm run config
+```
+
+### Starting server
+After finishing configuration run:
+```bash
+npm run start
 ```
 
 ### [AutoMagic](https://automagic4android.com/download_en.html)

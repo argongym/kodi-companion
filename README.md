@@ -66,7 +66,3 @@ If you have an older Android version and you have "permission denied" errors whe
 ```bash
 cp ./automagic/flows.xml /storage/emulated/0/Automagic/flows.xml
 ```
-
-### Tips
-[SyncThing](https://syncthing.net/) works greate for quick checks on Android devices.
-

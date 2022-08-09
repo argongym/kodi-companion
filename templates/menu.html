@@ -8,9 +8,8 @@
         <form action="/search" style="margin-bottom:0">
             <input type="text" name="phrase" placeholder="Искать на RuTracker..." value="{{ phrase }}" class="input-large">
         </form>
-            <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">NEW / неделя</a>
-            <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">NEW / месяц</a>
-        </div>
+        <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">NEW / WEEK</a>
+        <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">NEW / MONTH</a>
         <hr style="margin-top:20px;margin-bottom:25px">
         <div class="tr">
             {{#if config.with_automagic_app}}<div class="td2"><button class="button button-outline" @click="kodi()">Kodi</button></div>{{/if}}

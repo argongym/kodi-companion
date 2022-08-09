@@ -1,0 +1,25 @@
+
+<div x-data="{ shown: false }">
+    <div class="menu-button">
+        <span class="button button-large" @click="shown = true">MENU</span>
+    </div>
+    <div class="shader hidden" x-bind:class="{ 'hidden': ! shown }" @click="shown = false"></div>
+    <div class="bottom-content translatedY" x-bind:class="{ 'translatedY': ! shown }">
+        <form action="/search" style="margin-bottom:0">
+            <input type="text" name="phrase" placeholder="Искать на RuTracker..." value="{{ phrase }}" class="input-large">
+        </form>
+        <div class="tr">
+            <div class="td2">
+                <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">Новые за неделю</a>
+            </div>
+            <div class="td2">
+                <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">Новые за месяц</a>
+            </div>
+        </div>
+        <hr style="margin-top:20px;margin-bottom:25px">
+        <div class="tr">
+            {{#if true}}<div class="td2"><span class="button button-outline" @click="kodi()">Kodi</span></div>{{/if}}
+            <div class="td2" style="text-align: right;"><a href="/" class="button {{#not URL '/'}}button-outline{{/not}}">Медиатека</a></div>
+        </div>
+    </div>
+</div>

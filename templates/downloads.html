@@ -1,0 +1,19 @@
+<div x-data="{ shown: false }" x-init="$watch('status.active', () => status.active ? '' : shown = status.active)">
+    <div class="downloads-button hidden" x-bind:class="{ 'hidden': ! status.active }">
+        <span class="button button-small" @click="shown = true" x-text="status.progress + ' of ' + status.size + ' at ' + status.downloadSpeed"></span>
+    </div>
+    <div class="shader hidden" x-bind:class="{ 'hidden': ! shown }" @click="shown = false"></div>
+    <div class="bottom-content translatedY hr-separated" x-bind:class="{ 'translatedY': ! shown }">
+        <template x-for="(torrent, index) in status.torrents">
+            <div class="hr">
+                <h4 x-text="torrent.name" style="margin-bottom:5px"></h4>
+                <div style="margin-bottom:10px">
+                    <span x-text="torrent.progress"></span> of
+                    <span x-text="torrent.size"></span> at
+                    <span x-text="torrent.downloadSpeed"></span>
+                </div>
+                <span class="button button-outline" @click="await remove(torrent.tid)">Remove</span>
+            </div>
+        </template>
+    </div>
+</div>

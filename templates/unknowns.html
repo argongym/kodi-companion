@@ -1,0 +1,17 @@
+<div x-data='{ shown: false, unknowns: {{{stringify unknowns}}} }' x-show="unknowns.length" style="display: none">
+    <div class="unknowns-button">
+        <span class="button button-large" @click="shown = true">Unknown (<span x-text="unknowns.length"></span>)</span>
+    </div>
+    <div class="shader hidden" x-bind:class="{ 'hidden': ! shown }" @click="shown = false"></div>
+    <div class="bottom-content translatedY hr-separated" x-bind:class="{ 'translatedY': ! shown }">
+        <template x-for="(file, index) in unknowns" x-bind:key="file">
+            <div class="hr" x-data="{target: file}">
+                <input type="text" x-model="target">
+                <span class="button button-outline" @click="rename(file, target); unknowns.splice(index, 1);">Rename</span>
+            </div>
+        </template>
+        <p class="hr">
+            To apply changes open <a href="#" @click="kodi()">Kodi App</a>.
+        </p>
+    </div>
+</div>

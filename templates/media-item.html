@@ -1,0 +1,32 @@
+<div class="row hr" x-ref="file" x-data="{ confirm: false }">
+	<h2 style="margin-bottom: 0px">{{ label }}</h2>
+    <small style="margin-bottom: 15px">
+        {{originaltitle}} ({{year}}) &nbsp;•&nbsp; {{runtime}}<br><em>{{{genres}}}</em>
+    </small>
+    <p>{{ plot }}</p>
+    <span>
+
+	    <span class="button button-small" @click="play('{{file}}')">►</span>
+
+	    {{#if trailerid }}
+	    	<a class="button button-outline button-small" href="https://youtube.com/watch?v={{trailerid}}" target="_blank">Трейлер</a>
+	    {{/if}}
+
+	    {{#if imdbid }}
+		    <a class="button button-outline button-small" href="https://m.imdb.com/title/{{imdbid}}/" target="_blank">{{#if rating}}⭐ &nbsp;{{rating}} ({{votes}}) {{else}}IMDB{{/if}}</a>
+		{{else}}
+		    <a class="button button-outline button-small" href="https://m.imdb.com/find?q={{urlencode label}}" target="_blank">IMDB</a>
+	    {{/if}}
+
+	    <span class="button button-outline button-small" @click="confirm = true">Удалить</span>
+	</span>
+
+	<div style="display: none;" x-show="confirm">
+		<hr>
+		<h4>Удалить &laquo;{{label}}&raquo;?</h4>
+		<span>
+		    <span class="button button-outline" @click="confirm = false">Отменить</span>
+		    <span class="button" @click="delete('{{ file }}'); $refs.file.remove()">Удалить</span>
+		</span>
+	</div>
+</div>

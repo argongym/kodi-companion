@@ -1,0 +1,15 @@
+{
+	"with_automagic_app": true,
+	"http_port": "3000",
+	"antigate_api_key": "",
+	"rutracker_user": "",
+	"rutracker_pass": "",
+	"rutracker_useragent": "Mozilla/5.0",
+	"rutracker_hostname": "https://rutracker.org",
+	"rutracker_categories": "./cache/categories.json",
+	"curl_cookies_jar": "./cache/cookies.jar",
+	"kodi_db": "/storage/emulated/0/Android/data/org.xbmc.kodi/files/.kodi/userdata/Database/MyVideos119.db",
+	"torrents_tmp": "./cache/WebTorrent",
+	"torrents_dest": "/storage/emulated/0/Movies",
+	"movies_dest": "/storage/emulated/0/Movies"
+}

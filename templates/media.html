@@ -1,0 +1,17 @@
+{{> header title="Media Library" }}
+
+<div class="container hr-separated" style="padding-top: 30px">
+
+	{{#each movies}}
+		{{> media-item }}
+	{{/each}}
+
+	<div class="row hr">
+		<span class="button button-small button-outline" @click="clean">Почистить Библиотеку</span>
+		<small>Удаляет ненужные файлы и пустые папки.</small>
+	</div>
+</div>
+
+{{> unknowns }}
+
+{{> footer }}

@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<data version="1.38.0">
+  <trigger type="app_task_ended">
+    <useDefaultName>true</useDefaultName>
+    <name>App Task Ended: org.xbmc.kodi</name>
+    <enabled>true</enabled>
+    <method>CLASSIC</method>
+    <packageNameFilter>org.xbmc.kodi</packageNameFilter>
+  </trigger>
+  <trigger type="app_task_started">
+    <useDefaultName>true</useDefaultName>
+    <name>App Task Started: org.xbmc.kodi</name>
+    <enabled>true</enabled>
+    <method>CLASSIC</method>
+    <packageNameFilter>org.xbmc.kodi</packageNameFilter>
+  </trigger>
+  <trigger type="clipboard_changed">
+    <useDefaultName>false</useDefaultName>
+    <name>Pushover Notification Displayed</name>
+    <enabled>true</enabled>
+  </trigger>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF AUTOMAGIC</name>
+    <expression>contains(clip_data, "automagic-run-flow")</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF DELETE</name>
+    <expression>action == "delete"</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF KODI</name>
+    <expression>action == "kodi"</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF NOTIFY</name>
+    <expression>action == "notify"</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF PLAY</name>
+    <expression>action == "play"</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF RENAME</name>
+    <expression>action == "rename"</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>false</useDefaultName>
+    <name>IF TEST</name>
+    <expression>action == "test"</expression>
+  </condition>
+  <action type="copy_text_to_clipboard">
+    <useDefaultName>false</useDefaultName>
+    <name>Acknowledge Received</name>
+    <text>automagic-flow-complete:{clip_data}</text>
+  </action>
+  <action type="copy_text_from_clipboard">
+    <useDefaultName>true</useDefaultName>
+    <name>Copy Text From Clipboard: to variable clip_data</name>
+    <variable>clip_data</variable>
+  </action>
+  <action type="delete_files">
+    <useDefaultName>false</useDefaultName>
+    <name>Delete Path</name>
+    <pathList>"{path}"</pathList>
+    <showProgress>true</showProgress>
+  </action>
+  <action type="http_request">
+    <useDefaultName>true</useDefaultName>
+    <name>HTTP Request: POST https://api.telegram.org/{global_telegram_credentials}/sendMessage application/json {post_data} store in response</name>
+    <url>https://api.telegram.org/{global_telegram_credentials}/sendMessage</url>
+    <verifyCertificates>true</verifyCertificates>
+    <basicAuthentication>false</basicAuthentication>
+    <username></username>
+    <clientCert>false</clientCert>
+    <clientCertPath></clientCertPath>
+    <httpMethod>POST</httpMethod>
+    <networkType>DEFAULT</networkType>
+    <httpContentType>GENERAL_TEXT</httpContentType>
+    <contentType>application/json</contentType>
+    <generalTextData>{post_data}</generalTextData>
+    <formFieldList>Lastname=XYZ,Firstname=ABC</formFieldList>
+    <uploadFieldName>upload_field</uploadFieldName>
+    <uploadFilePath></uploadFilePath>
+    <binaryContentType>application/octet-stream</binaryContentType>
+    <binaryFilePath></binaryFilePath>
+    <timeout>60000</timeout>
+    <setCustomHTTPHeaders>false</setCustomHTTPHeaders>
+    <customHTTPHeaders></customHTTPHeaders>
+    <storeInVariable>true</storeInVariable>
+    <variable>response</variable>
+    <encoding>UTF-8</encoding>
+    <path>/storage/emulated/0/Download/file.bin</path>
+    <followRedirects>true</followRedirects>
+    <skipConnectivityCheck>false</skipConnectivityCheck>
+  </action>
+  <action type="launch_app">
+    <useDefaultName>true</useDefaultName>
+    <name>Launch App: org.xbmc.kodi</name>
+    <packageName>org.xbmc.kodi</packageName>
+    <className></className>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Kodi Ended (long)</name>
+    <showText>true</showText>
+    <text>Kodi Ended</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>true</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Kodi Started (long)</name>
+    <showText>true</showText>
+    <text>Kodi Started</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>true</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Launching Kodi...</name>
+    <showText>true</showText>
+    <text>Launching Kodi...</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Moved {source} to {target}.</name>
+    <showText>true</showText>
+    <text>Moved {source} to {target}.</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Moving {source} to {target}...</name>
+    <showText>true</showText>
+    <text>Moving {source} to {target}...</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Playing {path}...</name>
+    <showText>true</showText>
+    <text>Playing {path}...</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: Test passed.</name>
+    <showText>true</showText>
+    <text>Test passed.</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: {message}</name>
+    <showText>true</showText>
+    <text>{message}</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="notification_screen">
+    <useDefaultName>true</useDefaultName>
+    <name>Notification on Screen: {path} has been deleted.</name>
+    <showText>true</showText>
+    <text>{path} has been deleted.</text>
+    <widgetName></widgetName>
+    <width></width>
+    <height></height>
+    <stretchToFillArea>false</stretchToFillArea>
+    <opacity>1.00</opacity>
+    <durationLong>false</durationLong>
+    <customPosition>false</customPosition>
+    <gravityType>TOP_LEFT</gravityType>
+    <xOffset>0</xOffset>
+    <yOffset>0</yOffset>
+  </action>
+  <action type="script">
+    <useDefaultName>false</useDefaultName>
+    <name>Parse JSON</name>
+    <script>clip_data = replace(clip_data, "automagic-run-flow:", "");
+json = fromJSON(clip_data);
+action = json["action"];
+source = json["source"];
+target = json["target"];
+message = json["message"];
+path = json["path"];</script>
+  </action>
+  <action type="start_activity">
+    <useDefaultName>false</useDefaultName>
+    <name>Play Movie in Kodi</name>
+    <intentAction>android.intent.action.VIEW</intentAction>
+    <categoryListEnabled>false</categoryListEnabled>
+    <categoryList>android.intent.category.DEFAULT</categoryList>
+    <dataEnabled>true</dataEnabled>
+    <data>{path}</data>
+    <dataTypeEnabled>true</dataTypeEnabled>
+    <dataType>video/*</dataType>
+    <explicitComponent>true</explicitComponent>
+    <packageName>org.xbmc.kodi</packageName>
+    <className>org.xbmc.kodi.Splash</className>
+    <flagList>FLAG_ACTIVITY_NEW_TASK</flagList>
+    <launchBoundsEnabled>false</launchBoundsEnabled>
+    <x></x>
+    <y></y>
+    <width></width>
+    <height></height>
+    <extras></extras>
+    <waitForResult>false</waitForResult>
+    <accessResultExtras></accessResultExtras>
+  </action>
+  <action type="move_files">
+    <useDefaultName>false</useDefaultName>
+    <name>Rename Movie File</name>
+    <sourcePathList>{source}</sourcePathList>
+    <targetPath>{target}</targetPath>
+    <showProgress>true</showProgress>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: json = fromJSON(response); message_id = json["result"]["message_id"];</name>
+    <script>json = fromJSON(response);
+message_id = json["result"]["message_id"];</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: post_data = {'{"chat_id":"' + global_telegram_chat_id + '","text":"' + telegram_message + '","disable_notification":true}'};</name>
+    <script>post_data = {'{"chat_id":"' + global_telegram_chat_id + '","text":"' + telegram_message + '","disable_notification":true}'};</script>
+  </action>
+  <action type="set_screen_brightness">
+    <useDefaultName>true</useDefaultName>
+    <name>Set Screen Brightness: 100</name>
+    <automatic>false</automatic>
+    <brightness>100</brightness>
+    <changeAdaptive>false</changeAdaptive>
+    <adaptiveValue>50</adaptiveValue>
+    <forceUpdate>true</forceUpdate>
+  </action>
+  <action type="set_screen_brightness">
+    <useDefaultName>true</useDefaultName>
+    <name>Set Screen Brightness: 200</name>
+    <automatic>false</automatic>
+    <brightness>200</brightness>
+    <changeAdaptive>false</changeAdaptive>
+    <adaptiveValue>50</adaptiveValue>
+    <forceUpdate>true</forceUpdate>
+  </action>
+  <action type="set_screen_orientation">
+    <useDefaultName>true</useDefaultName>
+    <name>Set Screen Orientation: Reset to default</name>
+    <screenOrientation>UNSPECIFIED</screenOrientation>
+    <showResetNotification>true</showResetNotification>
+  </action>
+  <action type="set_screen_orientation">
+    <useDefaultName>true</useDefaultName>
+    <name>Set Screen Orientation: Sensor Portrait</name>
+    <screenOrientation>SENSOR_PORTRAIT</screenOrientation>
+    <showResetNotification>true</showResetNotification>
+  </action>
+  <action type="turn_screen_on">
+    <useDefaultName>true</useDefaultName>
+    <name>Turn Screen On: Bright for 5h</name>
+    <bright>true</bright>
+    <duration>5h</duration>
+    <resetUserActivityTimer>true</resetUserActivityTimer>
+  </action>
+  <flow type="flow">
+    <name>Kodi Ended</name>
+    <group>Kodi</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="70.0" y="52.5">
+      <trigger>App Task Ended: org.xbmc.kodi</trigger>
+    </triggercontainer>
+    <actioncontainer id="t2" x="70.0" y="367.5">Notification on Screen: Kodi Ended (long)</actioncontainer>
+    <actioncontainer id="t3" x="70.0" y="612.5">Set Screen Orientation: Sensor Portrait</actioncontainer>
+    <actioncontainer id="t4" x="70.0" y="1067.5001">Set Screen Orientation: Reset to default</actioncontainer>
+    <actioncontainer id="t5" x="69.99999" y="822.5">Set Screen Brightness: 200</actioncontainer>
+    <connection from="t1" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t4" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>Kodi Started</name>
+    <group>Kodi</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="70.0" y="52.5">
+      <trigger>App Task Started: org.xbmc.kodi</trigger>
+    </triggercontainer>
+    <actioncontainer id="t2" x="70.0" y="297.5">Turn Screen On: Bright for 5h</actioncontainer>
+    <actioncontainer id="t3" x="70.0" y="507.50006">Notification on Screen: Kodi Started (long)</actioncontainer>
+    <actioncontainer id="t4" x="70.0" y="717.5">Set Screen Brightness: 100</actioncontainer>
+    <connection from="t1" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t4" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>On Clipboard</name>
+    <group>Media</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <emergencyStopCount>5000</emergencyStopCount>
+    <triggercontainer id="t1" x="245.0" y="-717.5">
+      <trigger>Pushover Notification Displayed</trigger>
+    </triggercontainer>
+    <conditioncontainer id="t2" x="245.0" y="17.5">IF DELETE</conditioncontainer>
+    <actioncontainer id="t3" x="420.0" y="192.5">Play Movie in Kodi</actioncontainer>
+    <conditioncontainer id="t4" x="420.0" y="17.5">IF PLAY</conditioncontainer>
+    <actioncontainer id="t5" x="420.0" y="367.5">Notification on Screen: Playing {path}...</actioncontainer>
+    <actioncontainer id="t6" x="245.00002" y="367.5">Notification on Screen: {path} has been deleted.</actioncontainer>
+    <actioncontainer id="t7" x="69.999985" y="542.49994">Notification on Screen: Moved {source} to {target}.</actioncontainer>
+    <conditioncontainer id="t8" x="245.0" y="-367.5">IF AUTOMAGIC</conditioncontainer>
+    <conditioncontainer id="t9" x="70.00001" y="17.5">IF RENAME</conditioncontainer>
+    <actioncontainer id="t10" x="69.99996" y="192.50005">Notification on Screen: Moving {source} to {target}...</actioncontainer>
+    <actioncontainer id="t11" x="244.99994" y="192.50003">Delete Path</actioncontainer>
+    <actioncontainer id="t12" x="69.999985" y="367.50006">Rename Movie File</actioncontainer>
+    <conditioncontainer id="t13" x="-104.99991" y="17.499992">IF NOTIFY</conditioncontainer>
+    <actioncontainer id="t14" x="245.0" y="-542.5">Copy Text From Clipboard: to variable clip_data</actioncontainer>
+    <actioncontainer id="t15" x="245.0" y="717.50006">Acknowledge Received</actioncontainer>
+    <actioncontainer id="t16" x="-104.99992" y="192.50015">Notification on Screen: {message}</actioncontainer>
+    <conditioncontainer id="t17" x="595.0" y="17.5">IF TEST</conditioncontainer>
+    <actioncontainer id="t18" x="595.0" y="192.5">Notification on Screen: Test passed.</actioncontainer>
+    <actioncontainer id="t19" x="245.0" y="-192.5">Parse JSON</actioncontainer>
+    <conditioncontainer id="t20" x="770.0" y="17.500008">IF KODI</conditioncontainer>
+    <actioncontainer id="t21" x="770.0" y="192.5">Notification on Screen: Launching Kodi...</actioncontainer>
+    <actioncontainer id="t22" x="770.0" y="367.5">Launch App: org.xbmc.kodi</actioncontainer>
+    <connection from="t1" to="t14" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t11" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t3" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t15" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t6" to="t15" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t7" to="t15" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t8" to="t19" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t9" to="t10" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t10" to="t12" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t11" to="t6" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t12" to="t7" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t13" to="t16" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t14" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t16" to="t15" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t17" to="t18" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t18" to="t15" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t19" to="t9" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t19" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t19" to="t4" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t19" to="t17" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t19" to="t13" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t19" to="t20" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t20" to="t21" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t21" to="t22" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t22" to="t15" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+  <flow type="flow">
+    <name>Telegram: Send message</name>
+    <group>Telegram</group>
+    <enabled>true</enabled>
+    <executionPolicy>PARALLEL</executionPolicy>
+    <triggercontainer id="t1" x="70.0" y="52.5" />
+    <actioncontainer id="t2" x="70.0" y="262.5">Script: post_data = {'{"chat_id":"' + global_telegram_chat_id + '","text":"' + telegram_message + '","disable_notification":true}'};</actioncontainer>
+    <actioncontainer id="t3" x="70.0" y="437.5">HTTP Request: POST https://api.telegram.org/{global_telegram_credentials}/sendMessage application/json {post_data} store in response</actioncontainer>
+    <actioncontainer id="t4" x="70.0" y="612.5">Script: json = fromJSON(response); message_id = json["result"]["message_id"];</actioncontainer>
+    <connection from="t1" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t3" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t4" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+  </flow>
+</data>

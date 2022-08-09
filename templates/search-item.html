@@ -1,0 +1,17 @@
+<div class="row hr" id="file-{{ tid }}" x-data="{ downloading: false }">
+    <h2 style="margin-bottom: 5px">{{ label }}</h2>
+    <small style="margin-bottom: 15px">
+        <em>
+            {{#if sublabel}} {{ sublabel }}  &nbsp;•&nbsp; {{/if}}
+            {{category}} &nbsp;•&nbsp; 
+            {{{meta}}} &nbsp;•&nbsp; 
+            ⇩&nbsp;{{downloads}} &nbsp;•&nbsp; ⇪&nbsp;{{seeds}}
+        </em>
+    </small>
+    <span>
+        <span class="button button-small" x-bind:disabled="downloading" @click="add( {{ tid }} ); downloading = true" x-text="downloading ? 'Downloading' : '⇩ &nbsp;{{size}}' "></span>
+        <a class="button button-outline button-small" href="https://www.kinopoisk.ru/index.php?kp_query={{urlencode label}}" target="_blank">Кинопоиск</a>
+        <a class="button button-outline button-small" href="https://m.imdb.com/find?q={{urlencode label}}" target="_blank">IMDB</a>
+        <a class="button button-outline button-small" href="https://rutracker.org/forum/viewtopic.php?t={{ tid }}" target="_blank">RuTracker</a>
+    </span>
+</div>

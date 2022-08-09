@@ -1,0 +1,64 @@
+const fs = require('fs');
+const url = require('url');
+const http = require('http');
+const mime = require('mime');
+
+let routes = {
+	error404: function(request, response){
+		response.statusCode = 404;
+		response.setHeader('Content-Type', 'text/plain');
+		response.end('NOT FOUND');
+	},
+	static: function(request, response, path){
+		response.statusCode = 200;
+		response.setHeader('Content-Type', mime.getType(request.url));
+		response.end(fs.readFileSync(request.parsedURL.fspath));
+	}
+};
+
+function start(options){
+	http.createServer().listen(options.port ?? 3000).on('request', processRequest);
+	return this;
+}
+
+function addRoute(pathname, fn){
+	routes[pathname] = fn;
+	return this;
+};
+function addRoutes(newRoutes){
+	routes = {...routes, ...newRoutes};
+	return this;
+};
+
+async function processRequest(request, response){
+	//console.log("Requested URL: ", request.url);
+	const parsedURL = url.parse(request.url, true);
+	parsedURL.fspath = '.' + parsedURL.pathname;
+	request.parsedURL = parsedURL;
+	response.html = (content) => output(response, content, 'text/html');
+	response.json = (json) => output(response, json, 'application/json');
+	response.stringify = (obj) => output(response, JSON.stringify(obj), 'application/json');
+	if(parsedURL.pathname in routes){
+		routes[parsedURL.pathname](request, response);
+	} else if (fs.existsSync(parsedURL.fspath) && !fs.lstatSync(parsedURL.fspath).isDirectory()) {
+		routes.static(request, response);
+	} else {
+		routes.error404(request, response);
+	}
+}
+
+function output(response, content, type = 'html'){
+	response.statusCode = 200;
+	response.setHeader('Expires', 0);
+	response.setHeader('Pragma', 'no-cache');
+	response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+	response.setHeader('Content-Type', type);
+	response.end(content);
+}
+
+module.exports = {
+	routes: routes,
+	start: start,
+	addRoute: addRoute,
+	addRoutes: addRoutes,
+};

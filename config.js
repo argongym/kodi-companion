@@ -1,21 +1,6 @@
 const fs = require('fs');
 
-let confile = './config.json';
-if (process.env.STAGE == 'dev') confile = './config-dev.json';
-if (process.env.STAGE == 'config') {
-	if(!fs.existsSync('./config-tmp.json')){
-		fs.cpSync('./config-default.json', './config-tmp.json');
-	}
-	confile = './config-tmp.json';
-}
-
-let config = require(confile);
-for (let key in config){
-	// replacing leading "." in paths with a current working dir
-	if(typeof config[key] === 'string' || config[key] instanceof String){
-		config[key] = config[key].replace(/^\./, process.cwd());
-	}
-}
+let config = loadConfig();
 
 if (process.env.STAGE == 'config') {
 	const server = require('./server.js');
@@ -23,6 +8,7 @@ if (process.env.STAGE == 'config') {
 	const execSync = require('child_process').execSync;
 	server.start({ port: 3000 })
 	.addRoute('/', (req, res) => {
+		config = loadConfig();
 		let content = templates.fetch('config', {configs: config});
 		res.html(content);
 	})
@@ -35,6 +21,26 @@ if (process.env.STAGE == 'config') {
 		process.exit();
 	});
 	execSync('if [ -x "$(command -v termux-open)" ]; then termux-open http://127.0.0.1:3000/; elif [ -x "$(command -v xdg-open)" ]; then xdg-open http://127.0.0.1:3000/; elif [ -x "$(command -v open)" ]; then open http://127.0.0.1:3000/; elif [ -x "$(command -v start)" ]; then start http://127.0.0.1:3000/; else python -m webbrowser http://127.0.0.1:3000/; fi');
+}
+
+function loadConfig(){
+	let confile = './config.json';
+	if (process.env.STAGE == 'dev') confile = './config-dev.json';
+	if (process.env.STAGE == 'config') {
+		if(!fs.existsSync('./config-tmp.json')){
+			fs.cpSync('./config-default.json', './config-tmp.json');
+		}
+		confile = './config-tmp.json';
+	}
+
+	config = JSON.parse(fs.readFileSync(confile));
+	for (let key in config){
+		// replacing leading "." in paths with a current working dir
+		if(typeof config[key] === 'string' || config[key] instanceof String){
+			config[key] = config[key].replace(/^\./, process.cwd());
+		}
+	}
+	return config;
 }
 
 module.exports = config;

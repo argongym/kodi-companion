@@ -120,15 +120,18 @@ async function play(path){
 	if(config.with_automagic_app){
 		return automagic.play(path);
 	} else {
-		return Promise.reject('No way to play without Automagic');
+		execSync('if [ -x "$(command -v termux-open)" ]; then termux-open '+path+'; elif [ -x "$(command -v xdg-open)" ]; then xdg-open '+path+'; elif [ -x "$(command -v open)" ]; then open '+path+'; elif [ -x "$(command -v start)" ]; then start '+path+'; else python -m webbrowser '+path+'; fi');
+		return Promise.resolve();
 	}
 }
 
-async function kodi(path){
+async function kodi(){
 	if(config.with_automagic_app){
 		return automagic.kodi();
 	} else {
-		return Promise.reject('No way to open Kodi without Automagic');
+		let path = 'some.avi';
+		execSync('if [ -x "$(command -v termux-open)" ]; then termux-open '+path+'; elif [ -x "$(command -v xdg-open)" ]; then xdg-open '+path+'; elif [ -x "$(command -v open)" ]; then open '+path+'; elif [ -x "$(command -v start)" ]; then start '+path+'; else python -m webbrowser '+path+'; fi');
+		return Promise.resolve();
 	}
 }
 

@@ -69,10 +69,14 @@ cp ./automagic/flows.xml /storage/emulated/0/Automagic/flows.xml
 
 ## Screenshots
 
+### Library
 ![Library](./assets/images/screenshot-1.jpeg)
 
+### Menu
 ![Menu](./assets/images/screenshot-2.jpeg)
 
+### Search
 ![Search](./assets/images/screenshot-3.jpeg)
 
+### Torrents
 ![Torrents](./assets/images/screenshot-3.jpeg)

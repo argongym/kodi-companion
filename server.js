@@ -16,6 +16,14 @@ let routes = {
 	}
 };
 
+function stop(server){
+	process.send("STOP");	
+	process.on("STOP", function(){
+		console.log("Exiting NodeJS server...");
+		server.close();
+	})
+}
+
 function start(options){
 	http.createServer().listen(options.port ?? 3000).on('request', processRequest);
 	return this;
@@ -25,6 +33,7 @@ function addRoute(pathname, fn){
 	routes[pathname] = fn;
 	return this;
 };
+
 function addRoutes(newRoutes){
 	routes = {...routes, ...newRoutes};
 	return this;
@@ -59,6 +68,7 @@ function output(response, content, type = 'html'){
 module.exports = {
 	routes: routes,
 	start: start,
+	stop: stop,
 	addRoute: addRoute,
 	addRoutes: addRoutes,
 };

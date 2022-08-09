@@ -20,11 +20,6 @@ server.start({ port: config.http_port }).addRoutes({
 		res.html(content);
 	},
 
-	'/config': async (req, res) => {
-		let content = templates.fetch('config', { default: config.defaults(), config: config });
-		res.html(content);
-	},
-
 	'/torrents/add': async (req, res) => {
 		let torrent = await rutracker.download(req.parsedURL.query.tid);
 		let info = await torrents.add(torrent, req.parsedURL.query.tid);

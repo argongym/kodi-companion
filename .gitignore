@@ -27,6 +27,7 @@ composer.phar
 
 config.json
 config-dev.json
+config-tmp.json
 
 .stignore
 .stfolder

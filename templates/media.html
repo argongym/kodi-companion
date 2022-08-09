@@ -2,14 +2,17 @@
 
 <div class="container hr-separated" style="padding-top: 30px">
 
-	{{#each movies}}
-		{{> media-item }}
-	{{/each}}
-
-	<div class="row hr">
-		<button class="button button-small button-outline" @click="clean">Почистить Библиотеку</button>
-		<small>Удаляет ненужные файлы и пустые папки.</small>
-	</div>
+	{{#if movies}}
+		{{#each movies}}
+			{{> media-item }}
+		{{/each}}
+		<div class="row hr">
+			<button class="button button-small button-outline" @click="clean">Clean Library</button>
+			<small>Removes garbage files and empty folders.</small>
+		</div>
+	{{else}}
+		<h2>No movies found. Please make sure that Kodi App is still Up and Running in the background. Then pull page to refresh.</h2>
+	{{/if}}
 </div>
 
 {{> unknowns }}

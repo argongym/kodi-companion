@@ -66,3 +66,13 @@ If you have an older Android version and you have "permission denied" errors whe
 ```bash
 cp ./automagic/flows.xml /storage/emulated/0/Automagic/flows.xml
 ```
+
+## Screenshots
+
+![Library](./assets/images/screenshot-1.jpeg)
+
+![Menu](./assets/images/screenshot-2.jpeg)
+
+![Search](./assets/images/screenshot-3.jpeg)
+
+![Torrents](./assets/images/screenshot-3.jpeg)

@@ -13,7 +13,7 @@
 	    {{/if}}
 
 	    {{#if imdbid }}
-		    <a class="button button-outline button-small" href="https://m.imdb.com/title/{{imdbid}}/" target="_blank">{{#if rating}}⭐ &nbsp;{{rating}} ({{votes}}) {{else}}IMDB{{/if}}</a>
+		    <a class="button button-outline button-small" href="https://m.imdb.com/title/{{imdbnumber}}/" target="_blank">{{#if rating}}⭐ &nbsp;{{rating}} ({{votes}}) {{else}}IMDB{{/if}}</a>
 		{{else}}
 		    <a class="button button-outline button-small" href="https://m.imdb.com/find?q={{urlencode label}}" target="_blank">IMDB</a>
 	    {{/if}}

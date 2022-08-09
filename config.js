@@ -33,7 +33,7 @@ function loadConfig(){
 		confile = './config-tmp.json';
 	}
 
-	config = JSON.parse(fs.readFileSync(confile));
+	let config = JSON.parse(fs.readFileSync(confile));
 	for (let key in config){
 		// replacing leading "." in paths with a current working dir
 		if(typeof config[key] === 'string' || config[key] instanceof String){

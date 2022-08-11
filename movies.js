@@ -67,6 +67,7 @@ async function unknowns(){
 	} catch (e){
 		
 	}
+	console.log(kodiDb, kodiFiles, missing);
 	return missing;
 }
 

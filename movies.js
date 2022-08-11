@@ -67,7 +67,6 @@ async function unknowns(){
 	} catch (e){
 		
 	}
-	console.log(missing);
 	return missing;
 }
 

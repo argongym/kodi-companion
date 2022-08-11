@@ -7,7 +7,7 @@
         <template x-for="(file, index) in unknowns" x-bind:key="file">
             <div class="hr" x-data="{target: file}">
                 <input type="text" x-model="target">
-                <button class="button button-outline" @click="delete(target); unknowns.splice(index, 1);">Delete</button>
+                <button class="button button-outline" @click="deletePath(target); unknowns.splice(index, 1);">Delete</button>
                 <button class="button button-outline" @click="rename(file, target); unknowns.splice(index, 1);">Rename</button>
             </div>
         </template>

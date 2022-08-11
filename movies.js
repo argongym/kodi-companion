@@ -64,10 +64,10 @@ async function unknowns(){
 		files.forEach((item) => {
 			if(!kodiFiles.includes(item)) missing.push(item);
 		});
+		console.log(kodiDb, kodiFiles, missing);
 	} catch (e){
 		
 	}
-	console.log(kodiDb, kodiFiles, missing);
 	return missing;
 }
 

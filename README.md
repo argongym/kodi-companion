@@ -17,6 +17,8 @@ Make sure that your Android's screen refresh rate is 60Hz, otherwise you will se
 	2. Sort by set to Date added
 	3. Order set to Descending
 
+- Install Library.Watchdog Add-on
+
 ### Installing on [Termux](https://termux.dev/)
 Use [F Droid](https://f-droid.org/) to install Termux or install APK.
 ```bash

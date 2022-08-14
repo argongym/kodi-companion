@@ -136,7 +136,7 @@ async function kodi(){
 }
 
 async function wakeup(){
-	return automagic.wakeup().catch((e)=>{});
+	return automagic.wakeup();
 }
 
 async function deletePath(path){

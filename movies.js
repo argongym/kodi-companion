@@ -126,7 +126,17 @@ async function play(path){
 }
 
 async function kodi(){
-	return automagic.kodi();
+	if(config.with_automagic_app){
+		return automagic.kodi();
+	} else {
+		let path = 'some.avi';
+		execSync('if [ -x "$(command -v termux-open)" ]; then termux-open '+path+'; elif [ -x "$(command -v xdg-open)" ]; then xdg-open '+path+'; elif [ -x "$(command -v open)" ]; then open '+path+'; elif [ -x "$(command -v start)" ]; then start '+path+'; else python -m webbrowser '+path+'; fi');
+		return Promise.resolve();
+	}
+}
+
+async function wakeup(){
+	return automagic.wakeup().catch((e)=>{});
 }
 
 async function deletePath(path){

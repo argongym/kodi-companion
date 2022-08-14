@@ -70,4 +70,9 @@ server.start({ port: config.http_port }).addRoutes({
 		let info = movies.kodi();
 		res.stringify(info);
 	},
+
+	'/movies/wakeup/': async (req, res) => {
+		let info = movies.wakeup();
+		res.stringify(info);
+	},
 });

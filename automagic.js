@@ -5,6 +5,10 @@ let timeout = 5 * 60 * 1000;
 
 let sendingQueue = Promise.resolve();
 
+async function wakeup(){
+	return send({action:'wakeup' });
+}
+
 async function kodi(){
 	return send({action:'kodi' });
 }

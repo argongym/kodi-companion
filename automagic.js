@@ -6,30 +6,37 @@ let timeout = 5 * 60 * 1000;
 let sendingQueue = Promise.resolve();
 
 async function wakeup(){
+	timeout = 1000;
 	return send({action:'wakeup' });
 }
 
 async function kodi(){
+	timeout = 1000;
 	return send({action:'kodi' });
 }
 
 async function play(path){
+	timeout = 1000;
 	return send({action:'play', path: path });
 }
 
 async function rm(path){
+	timeout = 10000;
 	return send({action:'delete', path: path });
 }
 
 async function rename(source, target){
+	timeout = 5 * 60 * 1000;
 	return send({action:'rename', source: source, target: target });
 }
 
 async function notify(message){
+	timeout = 1000;
 	return send({action: 'notify', message: message });
 }
 
 async function test(options){
+	timeout = 1000;
 	return send({action: 'test', ...options });
 }
 

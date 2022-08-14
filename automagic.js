@@ -57,7 +57,7 @@ async function checkAck(cmd, clip, resolve, reject){
 	return setTimeout( () => {
 		//if [ -x \"$(command -v termux-clipboard-get)\" ]; then termux-clipboard-get; else pbpaste; fi
 		let ack = execSync("termux-clipboard-get");
-		if (ack == ('automagic-flow-complete:' + clip)){
+		if (ack.includes('automagic-flow-complete')){
 			return resolve({ complete: cmd.action });
 		} else {
 			if ((Date.now() - ackStart) > timeout) reject('ACK timeout for ' + clip);

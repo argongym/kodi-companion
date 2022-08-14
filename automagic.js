@@ -39,6 +39,7 @@ async function send(cmd){
 			let clip = JSON.stringify(cmd);
 			//if [ -x \"$(command -v termux-clipboard-set)\" ]; then termux-clipboard-set 'automagic-run-flow:" + clip + "'; else echo 'automagic-run-flow:" + clip + "' | pbcopy; fi
 			execSync("termux-clipboard-set 'automagic-run-flow:" + clip + "'");
+			execSync("termux-notification -c 'Automagic, check the clipboard!'");
 			ackStart = Date.now();
 			return checkAck(cmd, clip, resolve, reject);
 		});

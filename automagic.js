@@ -7,7 +7,7 @@ let sendingQueue = Promise.resolve();
 
 async function wakeup(){
 	timeout = 5000;
-	return send({action:'wakeup' });
+	return send({action:'wakeup' }).catch((e)=>(console.log(e.message)));
 }
 
 async function kodi(){

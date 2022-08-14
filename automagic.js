@@ -11,12 +11,12 @@ async function wakeup(){
 }
 
 async function kodi(){
-	timeout = 2000;
+	timeout = 5000;
 	return send({action:'kodi' });
 }
 
 async function play(path){
-	timeout = 2000;
+	timeout = 5000;
 	return send({action:'play', path: path });
 }
 
@@ -31,12 +31,12 @@ async function rename(source, target){
 }
 
 async function notify(message){
-	timeout = 1000;
+	timeout = 5000;
 	return send({action: 'notify', message: message });
 }
 
 async function test(options){
-	timeout = 1000;
+	timeout = 5000;
 	return send({action: 'test', ...options });
 }
 

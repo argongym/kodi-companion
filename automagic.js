@@ -62,6 +62,7 @@ module.exports = {
 	play: play,
 	rm: rm,
 	kodi: kodi,
+	wakeup: wakeup,
 	rename: rename,
 	notify: notify,
 	test: test,

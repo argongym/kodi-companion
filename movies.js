@@ -173,6 +173,7 @@ module.exports = {
 	rename: rename,
 	play: play,
 	kodi: kodi,
+	wakeup: wakeup,
 	deletePath: deletePath,
 	unknowns: unknowns,
 	cleanGarbage: () => {

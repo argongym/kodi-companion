@@ -7,7 +7,7 @@ let sendingQueue = Promise.resolve();
 
 async function wakeup(){
 	timeout = 5000;
-	return send({action:'wakeup' }).catch((e)=>(console.log(e.message)));
+	return send({action:'wakeup' });
 }
 
 async function kodi(){
@@ -60,7 +60,7 @@ async function checkAck(cmd, clip, resolve, reject){
 		if (ack.includes('automagic-flow-complete')){
 			return resolve({ complete: cmd.action });
 		} else {
-			if ((Date.now() - ackStart) > timeout) reject('ACK timeout for ' + clip);
+			if ((Date.now() - ackStart) > timeout) resolve('ACK timeout for ' + clip);
 			return checkAck(cmd, clip, resolve, reject);
 		}
 	}, 100);

@@ -38,8 +38,8 @@ async function send(cmd){
 		return new Promise((resolve, reject)=>{
 			let clip = JSON.stringify(cmd);
 			//if [ -x \"$(command -v termux-clipboard-set)\" ]; then termux-clipboard-set 'automagic-run-flow:" + clip + "'; else echo 'automagic-run-flow:" + clip + "' | pbcopy; fi
-			execSync("termux-clipboard-set 'automagic-run-flow:" + clip + "'");
-			execSync("termux-notification -c 'Automagic, check the clipboard!'");
+			//execSync("termux-clipboard-set 'automagic-run-flow:" + clip + "'");
+			execSync("termux-notification -c 'automagic-run-flow:" + clip + "'");
 			ackStart = Date.now();
 			return checkAck(cmd, clip, resolve, reject);
 		});

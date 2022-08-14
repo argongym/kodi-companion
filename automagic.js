@@ -6,17 +6,17 @@ let timeout = 5 * 60 * 1000;
 let sendingQueue = Promise.resolve();
 
 async function wakeup(){
-	timeout = 1000;
+	timeout = 5000;
 	return send({action:'wakeup' });
 }
 
 async function kodi(){
-	timeout = 1000;
+	timeout = 2000;
 	return send({action:'kodi' });
 }
 
 async function play(path){
-	timeout = 1000;
+	timeout = 2000;
 	return send({action:'play', path: path });
 }
 

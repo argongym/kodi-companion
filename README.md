@@ -39,6 +39,15 @@ Run the command and open http://127.0.0.1:3000/ in your web browser. Then copy c
 cp config-tmp.json config.json
 ```
 
+### Autostart server after boot
+1. Install the Termux:Boot app.
+2. Go to Android settings and turn off battery optimizations for Termux and Termux:Boot applications.
+3. Start the Termux:Boot app once by clicking on its launcher icon. This allows the app to be run at boot.
+4. Run the command:
+```bash
+cp -r .termux ~
+```
+
 ### Starting a Server
 ```bash
 npm run start

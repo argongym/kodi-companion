@@ -47,6 +47,7 @@ async function remove(tid){
 			[
 				config.torrents_tmp + '/' + torrents[tid].name + '/',
 				config.torrents_tmp + '/' + torrents[tid].name,
+				config.torrents_tmp + '/' + tid + '.torrent'
 			].forEach(function(path){
 				if((config.torrents_tmp == config.torrents_dest) && !path.match(/\.torrent/)) return;
 				if(fs.existsSync(path)) fs.rmSync(path, {recursive:true, force:true});

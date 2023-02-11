@@ -18,8 +18,8 @@ async function add(torrentFile, tid){
 			torrent.on('done', function(){
 				console.log('Finished downloading: ', tid, '/', torrent.name);
 				torrent.files.forEach(function(file){
+					let dest = config.torrents_dest + file.path.replace(config.torrents_tmp, '');
 					if(config.torrents_tmp != config.torrents_dest){
-						let dest = config.torrents_dest + file.path.replace(config.torrents_tmp, '');
 						fs.cpSync(file.path, dest, {recursive:true, force:true});
 						fs.rmSync(file.path, {recursive:true, force:true});
 					};

@@ -19,11 +19,11 @@ async function add(torrentFile, tid){
 				console.log('Finished downloading: ', tid, '/', torrent.name);
 				torrent.files.forEach(function(file){
 					let dest = config.torrents_dest + file.path.replace(config.torrents_tmp, '');
-					if(config.torrents_dest && config.torrents_tmp != config.torrents_dest){
+					if(config.torrents_tmp != config.torrents_dest){
 						fs.cpSync(file.path, dest, {recursive:true, force:true});
 						fs.rmSync(file.path, {recursive:true, force:true});
 					};
-					if(config.movies_dest && config.movies_dest != config.torrents_dest){
+					if(config.movies_dest != config.torrents_dest){
 						let target = config.movies_dest + file.path.replace(config.torrents_tmp, '');
 						movies.rename(dest, target);
 					}

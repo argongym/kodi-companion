@@ -2,6 +2,9 @@
 
 ## Installation
 
+### Tools
+Copy files between your devices: https://www.sharedrop.io
+
 ### Kodi
 Make sure that your Android's screen refresh rate is 60Hz, otherwise you will see a black screen in Kodi.
 

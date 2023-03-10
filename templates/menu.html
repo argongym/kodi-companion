@@ -5,21 +5,18 @@
     </div>
     <div class="shader hidden" x-bind:class="{ 'hidden': ! shown }" @click="shown = false"></div>
     <div class="bottom-content translatedY" x-bind:class="{ 'translatedY': ! shown }">
-        <form action="/search" style="margin-bottom:0">
-            <input type="text" name="phrase" placeholder="Search on RuTracker..." value="{{ phrase }}" class="input-large">
-        </form>
         <div class="tr">
-            <div class="td2">
-                <a href="/search?days=7" class="button {{#not URL '/search?days=7'}}button-outline{{/not}}">NEW / WEEK</a>
+            <div>
+                <form action="/search" style="margin-bottom:0">
+                    <input type="text" name="phrase" placeholder="Search on RuTracker..." value="{{ phrase }}" class="input-large">
+                </form>                
             </div>
-            <div class="td2" style="text-align:right;">
-                <a href="/search?days=32" class="button {{#not URL '/search?days=32'}}button-outline{{/not}}">NEW / MONTH</a>
-            </div>
+            <div class="td3" style="text-align: right; padding-top: 4px"><a href="/" class="button {{#not URL '/'}}button-outline{{/not}}">Library</a></div>
         </div>
         <hr style="margin-top:20px;margin-bottom:25px">
-        <div class="tr">
-            {{#if config.with_automagic_app}}<div class="td2"><button class="button button-outline" @click="kodi()">Kodi</button></div>{{/if}}
-            <div class="td2" style="text-align: right;"><a href="/" class="button {{#not URL '/'}}button-outline{{/not}}">Library</a></div>
-        </div>
+        <ul>
+            <li><strong>Downloads:</strong> <a href="/search?days=32">Last 30 days</a> &nbsp;|&nbsp; <a href="/search?days=7">Last 7 days</a></li>
+            <li><strong>Seeds:</strong> <a href="/search?days=32&order=10">Last 30 days</a> &nbsp;|&nbsp; <a href="/search?days=7&order=10">Last 7 days</a></li>
+        </ul>
     </div>
 </div>

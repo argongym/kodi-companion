@@ -66,18 +66,19 @@ function getCategories(){
 
 async function search(options){
 	let categories = getCategories();
-	let result = execSync(util.format(
+	let request = util.format(
 		'curl -s %s/forum/tracker.php -d "f=%s&nm=%s&tm=%s&o=%s&s=%s&pn=%s" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: %s" --cookie %s | iconv -f CP1251 -t UTF-8',
 		config.rutracker_hostname,
 		categories.join(','),                       // categories
 		options.phrase ?? '',                       // search phrase
 		options.days ?? (options.phrase ? '' : 7),  // days
-		4,                                          // order by downloads
+		options.order ?? 4,                         // order by downloads
 		2,                                          // sort desc
 		'',                                         // page number
 		config.rutracker_useragent,
 		config.curl_cookies_jar
-	)).toString();
+	);
+	let result = execSync(request).toString();
 
 	let torrents = [];
 	var root = HTMLParser.parse(result);

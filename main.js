@@ -15,7 +15,7 @@ server.start({ port: config.http_port }).addRoutes({
 	},
 
 	'/search': async (req, res) => {
-		let items = await rutracker.search({ days: req.parsedURL.query.days, phrase: req.parsedURL.query.phrase });
+		let items = await rutracker.search({ days: req.parsedURL.query.days, phrase: req.parsedURL.query.phrase, order: req.parsedURL.query.order });
 		let content = templates.fetch('search', { URL: req.url, torrents: items, phrase: req.parsedURL.query.phrase} );
 		res.html(content);
 	},

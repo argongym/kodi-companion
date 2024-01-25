@@ -54,7 +54,7 @@ function getCategories(){
 		config.curl_cookies_jar
 	)).toString();
 	if(result){
-	    let matches = [...result.matchAll(/<option id="fs-\d+" value="(\d+)"[^>]+?>[^<]*?(фильм|кино|Фильм|Мультсериалы)[^<]*?<\/option>/g)];
+	    let matches = [...result.matchAll(/<option id="fs-\d+" value="(\d+)"[^>]+?>[^<]*?(фильм|кино|Фильм|Мультсериалы|кинематог)[^<]*?<\/option>/g)];
 	    for(const match of matches){
 	    	categories.push(match[1]);
 	    }

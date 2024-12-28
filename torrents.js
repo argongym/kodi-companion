@@ -8,11 +8,11 @@ let torrents = {};
 
 resumeTorrents();
 
-async function add(torrentFile, tid, name, year){
+async function add(torrentFile, tid, filename){
 	return new Promise(function(resolve, reject){
 		client.add(torrentFile, { path: config.torrents_tmp }, function (torrent){
-			fs.writeFileSync(config.torrents_tmp + '/' + tid + '.torrent', torrentFile);
-			console.log('Downloading torrent: ', tid, '/', torrent.name, name, year);
+			fs.writeFileSync(`${config.torrents_tmp}/${filename}.${tid}.torrent`, torrentFile);
+			console.log('Downloading torrent: ', tid, '/', torrent.name, filename);
 			torrent.tid = tid;
 			torrents[tid] = torrent;
 			torrent.on('done', function(){
@@ -20,10 +20,11 @@ async function add(torrentFile, tid, name, year){
 				const movieFiles = torrent.files.filter(file => isMovieFile(file.path));
 				movieFiles.forEach((file, index) => {
 					const ext = path.extname(file.path); // Get file extension
-					const newName = `${config.movies_dest}/${name}${movieFiles.length > 1 ? `.${index + 1}` : ''}${year > 0 ? year + '.' : ""}${ext}`;
+					const dir = path.dirname(file.path); // Get the directory of the file
+					const newName = path.join(dir, `${filename}${movieFiles.length > 1 ? `.${index + 1}` : ''}${ext}`);
 					fs.renameSync(file.path, newName);
 					console.log(`Renamed: ${file.path} -> ${newName}`);
-				});				
+				});
 				torrent.files.forEach(function(file){
 					let dest = config.torrents_dest + file.path.replace(config.torrents_tmp, '');
 					if(config.torrents_tmp != config.torrents_dest){
@@ -109,8 +110,11 @@ async function resumeTorrents(){
 	fs.readdirSync(config.torrents_tmp).forEach(file => {
 		if (file.match('.torrent')) {
 			console.log('Resuming torrent ' + file);
-			let tid = path.basename(file, '.torrent');
-			add(fs.readFileSync(config.torrents_tmp + '/' + file), tid);
+			const parts = file.split('.');
+			const extension = parts.pop();
+			const tid = parts.pop();
+			const filename = parts.join('.');
+			add(fs.readFileSync(config.torrents_tmp + '/' + file), tid, filename);
 		}
 	});
 }

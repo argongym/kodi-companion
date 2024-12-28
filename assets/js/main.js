@@ -35,8 +35,8 @@ document.addEventListener('alpine:init', () => {
             }).bind(this);
             this.checkStatus();
         },
-        async add(tid) {
-            let status = await GET('/torrents/add?tid=' + tid);
+        async add(tid, name, year) {
+            let status = await GET(`/torrents/add?tid=${tid}&name=${encodeURIComponent(name)}&year=${year}`);
             this.updateStatus();
         },
         async pause(tid) {

@@ -9,7 +9,7 @@
         </em>
     </small>
     <span>
-        <button class="button button-small" x-bind:disabled="downloading" @click="add( {{ tid }} ); downloading = true">⇩ &nbsp;{{size}}</button>
+        <button class="button button-small" x-bind:disabled="downloading" @click="add( {{tid}}, '{{name}}', '{{year}}' ); downloading = true">⇩ &nbsp;{{size}}</button>
         <a class="button button-outline button-small" href="https://www.kinopoisk.ru/index.php?kp_query={{urlencode label}}" target="_blank">Kinopoisk</a>
         <a class="button button-outline button-small" href="https://m.imdb.com/find?q={{urlencode label}}" target="_blank">IMDB</a>
         <a class="button button-outline button-small" href="https://rutracker.org/forum/viewtopic.php?t={{ tid }}" target="_blank">RuTracker</a>

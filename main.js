@@ -22,7 +22,7 @@ server.start({ port: config.http_port }).addRoutes({
 
 	'/torrents/add': async (req, res) => {
 		let torrent = await rutracker.download(req.parsedURL.query.tid);
-		let info = await torrents.add(torrent, req.parsedURL.query.tid);
+		let info = await torrents.add(torrent, req.parsedURL.query.tid, req.parsedURL.query.name, req.parsedURL.query.year);
 		res.stringify(info);
 	},
 

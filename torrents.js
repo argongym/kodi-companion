@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fspath = require('path');
+const path = require('path');
 const client = new (require('webtorrent'))();
 const movies = require('./movies.js');
 const config = require('./config.js');
@@ -8,7 +8,7 @@ let torrents = {};
 
 resumeTorrents();
 
-async function add(torrentFile, tid){
+async function add(torrentFile, tid, name, year){
 	return new Promise(function(resolve, reject){
 		client.add(torrentFile, { path: config.torrents_tmp }, function (torrent){
 			fs.writeFileSync(config.torrents_tmp + '/' + tid + '.torrent', torrentFile);
@@ -17,6 +17,13 @@ async function add(torrentFile, tid){
 			torrents[tid] = torrent;
 			torrent.on('done', function(){
 				console.log('Finished downloading: ', tid, '/', torrent.name);
+				const movieFiles = torrent.files.filter(file => isMovieFile(file.path));
+				movieFiles.forEach((file, index) => {
+					const ext = path.extname(file.path); // Get file extension
+					const newName = `${config.movies_dest}/${name}${movieFiles.length > 1 ? `.${index + 1}` : ''}${year > 0 ? year + '.' : ""}${ext}`;
+					fs.renameSync(file.path, newName);
+					console.log(`Renamed: ${file.path} -> ${newName}`);
+				});				
 				torrent.files.forEach(function(file){
 					let dest = config.torrents_dest + file.path.replace(config.torrents_tmp, '');
 					if(config.torrents_tmp != config.torrents_dest){
@@ -49,9 +56,9 @@ async function remove(tid){
 				config.torrents_tmp + '/' + torrents[tid].name + '/',
 				config.torrents_tmp + '/' + torrents[tid].name,
 				config.torrents_tmp + '/' + tid + '.torrent'
-			].forEach(function(path){
-				if((config.torrents_tmp == config.torrents_dest) && !path.match('.torrent')) return;
-				if(fs.existsSync(path)) fs.rmSync(path, {recursive:true, force:true});
+			].forEach(function(file){
+				if((config.torrents_tmp == config.torrents_dest) && !file.match('.torrent')) return;
+				if(fs.existsSync(file)) fs.rmSync(file, {recursive:true, force:true});
 			})
 			torrents[tid].destroy();
 			delete torrents[tid];
@@ -102,10 +109,15 @@ async function resumeTorrents(){
 	fs.readdirSync(config.torrents_tmp).forEach(file => {
 		if (file.match('.torrent')) {
 			console.log('Resuming torrent ' + file);
-			let tid = fspath.basename(file, '.torrent');
+			let tid = path.basename(file, '.torrent');
 			add(fs.readFileSync(config.torrents_tmp + '/' + file), tid);
 		}
 	});
+}
+
+function isMovieFile(filePath) {
+    const movieExtensions = ['.mp4', '.mkv', '.avi', '.mov', '.wmv']; // Add more extensions as needed
+    return movieExtensions.includes(path.extname(filePath).toLowerCase());
 }
 
 function formatBytes(bytes, decimals = 2) {

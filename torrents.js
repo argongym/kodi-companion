@@ -50,7 +50,7 @@ async function add(torrentFile, tid, filename){
 	});
 }
 
-async function remove(tid){
+async function remove(tid, filename){
 	return new Promise(function(resolve, reject){
 		client.remove(torrents[tid], function(){
 			[

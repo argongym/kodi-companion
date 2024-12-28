@@ -72,7 +72,7 @@ async function search(options){
 		categories.join(','),                       // categories
 		options.phrase ?? '',                       // search phrase
 		options.days ?? (options.phrase ? '' : 7),  // days
-		options.order ?? 4,                         // order by downloads
+		options.order ?? 10,                        // order by seeds (4 - downloads, 10 - seeds, 11 - leeches)
 		2,                                          // sort desc
 		'',                                         // page number
 		config.rutracker_useragent,

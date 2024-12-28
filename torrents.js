@@ -36,7 +36,7 @@ async function add(torrentFile, tid, filename){
 						movies.rename(dest, target);
 					}
 				});
-				remove(tid);
+				remove(tid, filename);
 			});
 			return resolve({
 				tid: tid,
@@ -56,7 +56,8 @@ async function remove(tid){
 			[
 				config.torrents_tmp + '/' + torrents[tid].name + '/',
 				config.torrents_tmp + '/' + torrents[tid].name,
-				config.torrents_tmp + '/' + tid + '.torrent'
+				config.torrents_tmp + '/' + tid + '.torrent',
+				config.torrents_tmp + '/' + filename + '.' + tid + '.torrent'
 			].forEach(function(file){
 				if((config.torrents_tmp == config.torrents_dest) && !file.match('.torrent')) return;
 				if(fs.existsSync(file)) fs.rmSync(file, {recursive:true, force:true});

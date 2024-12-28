@@ -12,7 +12,7 @@ async function add(torrentFile, tid, name, year){
 	return new Promise(function(resolve, reject){
 		client.add(torrentFile, { path: config.torrents_tmp }, function (torrent){
 			fs.writeFileSync(config.torrents_tmp + '/' + tid + '.torrent', torrentFile);
-			console.log('Downloading torrent: ', tid, '/', torrent.name);
+			console.log('Downloading torrent: ', tid, '/', torrent.name, name, year);
 			torrent.tid = tid;
 			torrents[tid] = torrent;
 			torrent.on('done', function(){

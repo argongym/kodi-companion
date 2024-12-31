@@ -91,7 +91,7 @@ async function search(options){
 			tid: tr.attributes['data-topic_id'],
 			label: fullTitle.replace(/\s*(.+?)\s*[\/\(].+/, "$1").trim(),
 			sublabel: {...fullTitle.match(/.+?[\/]\s*(.+?)\s*\(.+/, "$1")}[1],
-			year: yearMatch[1] ?? "",
+			year: yearMatch?.[1] ?? "",
 			meta: fullTitle.replace(/.+?\s*(\(.+)\s*/, "$1").trim().replaceAll(/(комедия|семейный|фантастика|приключения)/g, "<b>$1</b>"),
 			category: tr.querySelector('a.gen.f.ts-text').innerHTML,
 			size: unescapeHTML(tr.querySelector('a.small.tr-dl.dl-stub').innerHTML).replaceAll(/[^0-9A-Z\.\,]+/g, '').trim(),

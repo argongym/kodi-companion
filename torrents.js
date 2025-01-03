@@ -9,6 +9,7 @@ let torrents = {};
 resumeTorrents();
 
 async function add(torrentFile, tid, filename){
+	filename = filename.replace(/[\:]/, ' ');
 	return new Promise(function(resolve, reject){
 		client.add(torrentFile, { path: config.torrents_tmp }, function (torrent){
 			fs.writeFileSync(`${config.torrents_tmp}/${filename}.${tid}.torrent`, torrentFile);

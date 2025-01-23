@@ -9,7 +9,7 @@ if(!fs.existsSync('cache')) fs.mkdirSync('cache');
 async function download(torrentId) {
 	return execSync(util.format(
 		'curl -s %s/forum/dl.php?t=%s -H "User-Agent: %s" --cookie %s',
-		config.rutracker_hostname,
+		config.rutracker_hostname ?? "https://rutracker.org",
 		torrentId,
 		config.rutracker_useragent,
 		config.curl_cookies_jar
@@ -19,7 +19,7 @@ async function download(torrentId) {
 async function login(){
 	let result = execSync(util.format(
 		'curl -s -X POST %s/forum/login.php -d "redirect=index.php&login_username=%s&login_password=%s&login=%C2%F5%EE%E4" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: %s" --cookie-jar %s',
-		config.rutracker_hostname,
+		config.rutracker_hostname ?? "https://rutracker.org",
 		config.rutracker_user,
 		config.rutracker_pass,
 		config.rutracker_useragent,
@@ -32,7 +32,7 @@ async function login(){
 		let captcha = await antiGateImg(captcha_src);
 		result = execSync(util.format(
 			'curl -s -X POST %s/forum/login.php -d "cap_sid=%s&%s=%s&redirect=index.php&login_username=%s&login_password=%s&login=%C2%F5%EE%E4" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: %s" --cookie-jar %s',
-			config.rutracker_hostname,
+			config.rutracker_hostname ?? "https://rutracker.org",
 			captcha_sid, captcha_name, captcha,
 			config.rutracker_user,
 			config.rutracker_pass,
@@ -49,7 +49,7 @@ function getCategories(){
 	let categories = [];
 	let result = execSync(util.format(
 		'curl -s %s/forum/tracker.php -H "User-Agent: %s" --cookie %s | iconv -f CP1251 -t UTF-8',
-		config.rutracker_hostname,
+		config.rutracker_hostname ?? "https://rutracker.org",
 		config.rutracker_useragent,
 		config.curl_cookies_jar
 	)).toString();
@@ -68,7 +68,7 @@ async function search(options){
 	let categories = getCategories();
 	let request = util.format(
 		'curl -s %s/forum/tracker.php -d "f=%s&nm=%s&tm=%s&o=%s&s=%s&pn=%s" -H "Content-Type: application/x-www-form-urlencoded" -H "User-Agent: %s" --cookie %s | iconv -f CP1251 -t UTF-8',
-		config.rutracker_hostname,
+		config.rutracker_hostname ?? "https://rutracker.org",
 		categories.join(','),                       // categories
 		options.phrase ?? '',                       // search phrase
 		options.days ?? (options.phrase ? '' : 7),  // days
